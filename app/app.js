@@ -71,8 +71,8 @@ app.use("/file", file);
 
 //app.use('/', hello);
 //app.use('/', onepage);
-app.use("/index", home);
-app.use("/home", home);
+app.use("/index", onepage);
+app.use("/home", onepage);
 app.use("/users", users);
 
 app.use("/about", about);
