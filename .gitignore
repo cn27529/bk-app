@@ -1,0 +1,6 @@
+node_modules
+npm-debug.log
+#*.sqlite
+.bash_profile
+package-lock.json
+logs
