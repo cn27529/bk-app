@@ -58,6 +58,8 @@ var hello = require("./routes/hello");
 var weather = require("./routes/weather");
 var sitelinechat = require("./routes/sitelinechat");
 
+var todolist = require("./routes/todolist");
+
 //app.use('/', index);
 //app.use('/index', index);
 app.use("/account", account);
@@ -80,6 +82,8 @@ app.use("/sitemap", sitemap);
 app.use("/video", video);
 app.use("/random", random);
 app.use("/onepage", onepage);
+
+app.use("/todolist", todolist);
 
 app.use("/signin", signin);
 

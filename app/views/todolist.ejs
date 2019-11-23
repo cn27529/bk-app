@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+        <%=title%>
+    </title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+</head>
+
+<body>
+
+    <div id='todolist-app'>
+
+        <h1>
+            {{ title }}
+        </h1>
+        <hr>
+        <form id="todolistForm">
+            <input type="text" class="newTodo" id="newTodo" v-model="newTodo" v-on:keyup.enter="addTodo">
+            <ul>
+                <li v-for="(item, index) in data_list">
+                    <span v-if="item.id <=9">0{{ item.id }}</span>
+                    <span v-else>{{ item.id }}</span>
+                    <button type="button" id="btn{{ item.id }}">ok</button>
+                    <span>{{ item.content }}</span>
+                </li>
+            </ul>
+        </form>
+
+
+
+    </div>
+
+    <style>
+        .newTodo {
+            width: 50%;
+        }
+    </style>
+
+</body>
+
+<script>
+    var _data_list = JSON.parse('<%-data_list%>');
+
+    console.log('pure js');
+
+    if (typeof Vue === 'function') {
+
+        console.log('vue ready');
+
+        var todolist_app = new Vue({
+            el: '#todolist-app',
+            data: {
+                data_list: _data_list,
+                title: '<%=title%>',
+                newTodo: '',
+            },
+
+
+            methods: {
+                addTodo(e) {
+
+                    //console.log(e);
+
+                    if (this.newTodo === '') return false;
+
+                    //get max id then plus 1
+                    var newid = Math.max.apply(Math, todolist_app.data_list.map(function(o) {
+                        return o.id;
+                    })) + 1;
+
+                    var newTodo = {
+                        id: newid,
+                        content: this.newTodo,
+                        status: false
+                    }
+
+                    this.data_list.push(newTodo);
+                    this.newTodo = '';
+
+                }
+            },
+        });
+    } else alert('Vue is undefinded');
+
+    console.log('loaded js');
+</script>
+
+
+</html>
