@@ -19,17 +19,17 @@
             {{ title }}
         </h1>
         <hr>
-        <form id="todolistForm">
-            <input type="text" class="newTodo" id="newTodo" v-model="newTodo" v-on:keyup.enter="addTodo">
-            <ul>
-                <li v-for="(item, index) in data_list">
-                    <span v-if="item.id <=9">0{{ item.id }}</span>
-                    <span v-else>{{ item.id }}</span>
-                    <button type="button" id="btn{{ item.id }}">ok</button>
-                    <span>{{ item.content }}</span>
-                </li>
-            </ul>
-        </form>
+
+        <input type="text" class="newTodo" id="newTodo" v-model="newTodo" v-on:keyup.enter="addTodo">
+        <ul>
+            <li v-for="(item, index) in data_list">
+                <span v-if="item.id <=9">0{{ item.id }}</span>
+                <span v-else>{{ item.id }}</span>
+                <button type="button" id="btn{{ item.id }}">ok</button>
+                <span>{{ item.content }}</span>
+            </li>
+        </ul>
+
 
 
 
@@ -44,13 +44,19 @@
 </body>
 
 <script>
+    var _data_list = JSON.parse('<%-data_list%>');
+
+    console.log('pure js');
+
     var body_onload = function() {
         //alert('body_onload');
         console.log('body_onload');
+        init_vue();
+    };
 
-        var _data_list = JSON.parse('<%-data_list%>');
 
-        console.log('pure js');
+
+    var init_vue = function() {
 
         if (typeof Vue === 'function') {
 
@@ -63,7 +69,6 @@
                     title: '<%=title%>',
                     newTodo: '',
                 },
-
 
                 methods: {
                     addTodo(e) {
@@ -89,11 +94,17 @@
                     }
                 },
             });
-        } else alert('Vue is undefinded');
 
-        console.log('loaded js');
+            console.log('vue loaded');
+
+        } else
+            alert('Vue is undefinded');
 
     };
+
+
+
+    console.log('loaded js');
 </script>
 
 
