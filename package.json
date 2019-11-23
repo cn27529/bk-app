@@ -4,6 +4,9 @@
     "description": "",
     "main": "index.js",
     "private": true,
+    "engines": {
+        "node": ">=8.0.0 <11.0.0"
+    },
     "scripts": {
         "start": "node app/index dev",
         "test": "node ./app/index dev",
