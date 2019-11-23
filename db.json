@@ -1,19 +1,32 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+    "posts": [{
+        "id": 1,
+        "title": "json-server",
+        "author": "typicode"
+    }],
+
+    "comments": [{
+        "id": 1,
+        "body": "some comment",
+        "postId": 1
+    }],
+
+    "profile": {
+        "name": "typicode"
+    },
+
+    "todolist": [{
+            "id": 1,
+            "content": "Learning coding for Vue at 10:00",
+            "status": true
+        },
+        { "id": 2, "content": "Go to sleep at 13:00", "status": false },
+        {
+            "id": 3,
+            "content": "Read My like books at 15:00",
+            "status": true
+        },
+        { "id": 4, "content": "Have meal at 19:30", "status": false },
+        { "id": 5, "content": "Watch movie 20:00", "status": false }
+    ]
 }
