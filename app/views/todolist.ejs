@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 </head>
 
-<body>
+<body onload="body_onload()">
 
     <div id='todolist-app'>
 
@@ -44,50 +44,56 @@
 </body>
 
 <script>
-    var _data_list = JSON.parse('<%-data_list%>');
+    var body_onload = function() {
+        //alert('body_onload');
+        console.log('body_onload');
 
-    console.log('pure js');
+        var _data_list = JSON.parse('<%-data_list%>');
 
-    if (typeof Vue === 'function') {
+        console.log('pure js');
 
-        console.log('vue ready');
+        if (typeof Vue === 'function') {
 
-        var todolist_app = new Vue({
-            el: '#todolist-app',
-            data: {
-                data_list: _data_list,
-                title: '<%=title%>',
-                newTodo: '',
-            },
+            console.log('vue ready');
+
+            var todolist_app = new Vue({
+                el: '#todolist-app',
+                data: {
+                    data_list: _data_list,
+                    title: '<%=title%>',
+                    newTodo: '',
+                },
 
 
-            methods: {
-                addTodo(e) {
+                methods: {
+                    addTodo(e) {
 
-                    //console.log(e);
+                        //console.log(e);
 
-                    if (this.newTodo === '') return false;
+                        if (this.newTodo === '') return false;
 
-                    //get max id then plus 1
-                    var newid = Math.max.apply(Math, todolist_app.data_list.map(function(o) {
-                        return o.id;
-                    })) + 1;
+                        //get max id then plus 1
+                        var newid = Math.max.apply(Math, todolist_app.data_list.map(function(o) {
+                            return o.id;
+                        })) + 1;
 
-                    var newTodo = {
-                        id: newid,
-                        content: this.newTodo,
-                        status: false
+                        var newTodo = {
+                            id: newid,
+                            content: this.newTodo,
+                            status: false
+                        }
+
+                        this.data_list.push(newTodo);
+                        this.newTodo = '';
+
                     }
+                },
+            });
+        } else alert('Vue is undefinded');
 
-                    this.data_list.push(newTodo);
-                    this.newTodo = '';
+        console.log('loaded js');
 
-                }
-            },
-        });
-    } else alert('Vue is undefinded');
-
-    console.log('loaded js');
+    };
 </script>
 
 
