@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      <%=title%>
+    </title>
+    <!-- jQuery.js v1.11.1 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- This following line is optional. Only necessary if you use the option css3:false and you want to use other easing effects rather than "linear", "swing" or "easeInOutCubic". -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/jquery.easings.min.jss"></script>
+
+    <!-- This following line is only necessary in the case of using the option `scrollOverflow:true` -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/vendors/scrolloverflow.min.js"></script>
+
+    <!-- fullPage.js v2.9.5 -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.5/jquery.fullpage.js"></script>
+
+    <!-- https://fontawesome.com/how-to-use/on-the-web/setup/getting-started?using=web-fonts-with-css -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* Style for our header texts
+            * --------------------------------------- */
+
+      a {
+        text-decoration: none;
+        color: antiquewhite;
+      }
+
+      .icon {
+        margin-top: 30px;
+      }
+
+      .icon a {
+        margin: 15px;
+      }
+
+      i {
+        font-size: 5em;
+      }
+
+      h1 {
+        font-size: 3em;
+        font-family: arial, helvetica;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Centered texts in each section
+        Backgrounds will cover all the section
+            * --------------------------------------- */
+
+      .section {
+        text-align: center;
+        background-size: cover;
+      }
+      .slide {
+        background-size: cover;
+      }
+
+      .slide h1 {
+        top: -60%;
+        transform: translateY(-50%);
+        position: relative;
+      }
+
+      /* Defining each section background and styles
+            * --------------------------------------- */
+
+      #section0 {
+        background-image: url(public/bg1.png);
+        position: relative;
+      }
+
+      #section0 h1 {
+        text-align: center;
+        position: absolute;
+        color: #000000;
+        top: -400px;
+        left: 0px;
+        right: 0px;
+        margin: 0px auto;
+
+        transition: all 1.1s ease-out;
+        -webkit-transition: all 1.1s ease-out;
+      }
+
+      .fp-viewing-1 #section0 h1 {
+        top: 28px;
+      }
+
+      #section3 {
+        background-image: url(public/bg4.png);
+        padding: 6% 0 0 0;
+      }
+
+      #section2 {
+        background-image: url(public/bg3.png);
+        padding: 6% 0 0 0;
+      }
+
+      /*Adding background for the slides
+            * --------------------------------------- */
+
+      #slide1 {
+        background-image: url(public/bg5.png);
+        padding: 6% 0 0 0;
+      }
+
+      #slide2 {
+        background-image: url(public/bg3.png);
+        padding: 6% 0 0 0;
+      }
+
+      #slide3 {
+        background-image: url(public/bg7.png);
+        padding: 6% 0 0 0;
+      }
+
+      #slide3 h1 {
+        color: #000000;
+      }
+
+      /* Bottom menu
+            * --------------------------------------- */
+
+      #infoMenu li a {
+        color: #fff;
+      }
+
+      .myVideo {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 100% 100%;
+        background-color: black;
+        /* in case the video doesn't fit the whole page*/
+        background-image: /* our video */ ;
+        background-position: center center;
+        background-size: contain;
+        object-fit: cover;
+        /*cover video background */
+        z-index: 3;
+      }
+
+      .section .layer {
+        position: absolute;
+        z-index: 4;
+        width: 100%;
+        left: 0;
+        top: 28%;
+
+        /*
+		* Preventing flicker on some browsers
+		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+		*/
+        -webkit-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    </style>
+
+    <!--[if IE]>
+      <script type="text/javascript">
+        var console = { log: function() {} };
+      </script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="fullpage">
+      <div class="section" id="section2">
+        <video class="myVideo" loop muted data-autoplay>
+          <source src="public/flowers.mp4" type="video/mp4" />
+          <source src="public/flowers.webm" type="video/webm" />
+        </video>
+        <div class="layer">
+          <h1>
+            <%= title_tw %>
+            <br />
+            <%= title_en %>
+          </h1>
+        </div>
+      </div>
+
+      <div class="section " id="section0">
+        <h1>
+          YO！寫一些話在這兒吧XD
+        </h1>
+      </div>
+
+      <div class="section" id="section1">
+        <div class="slide" id="slide1">
+          <h1>被保特瓶們攻擊中</h1>
+        </div>
+
+        <div class="slide" id="slide2">
+          <h1>看阿～這黑嗎嗎的女人</h1>
+        </div>
+        <div class="slide" id="slide3">
+          <h1>這是兩個大頭互擠</h1>
+        </div>
+      </div>
+
+      <div class="section" id="section3">
+        <!-- <video class="myVideo" loop muted data-autoplay>
+                <source src="public/polina.mp4" type="video/mp4">
+                <source src="public/polina.webm" type="video/webm">
+            </video> -->
+
+        <!-- <video class="myVideo" loop muted data-autoplay>
+                <source src="https://drive.google.com/drive/u/0/folders/0BzsuNQH9iKgKX0FsUkk0NVRsdlE" type='video/mp4'/>
+            </video> -->
+
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://drive.google.com/file/d/10EkHPdKvpPplmTfTt4LKXsXJfaMsydCT/view?usp=sharing"
+        ></iframe>
+
+        <div class="layer">
+          <h1>
+            <a target="_blank" href="http://blog.dancecology.com/">
+              我們的精彩的表演，即將展開中
+            </a>
+          </h1>
+          <div class="icon">
+            <!--facebook-->
+            <a target="_blank" href="https://www.facebook.com/dancecology">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <!--blogger-->
+            <a target="_blank" href="http://blog.dancecology.com/">
+              <i class="fab fa-blogger"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="section4">
+        <!-- <video class="myVideo" loop muted data-autoplay>
+                <source src="https://www.dropbox.com/s/dlx0i2rj86ggi3g/Wanderer%20%28final%29.mov?raw=1" type="video/mp4">
+                </video> -->
+
+        <iframe
+          src="https://player.vimeo.com/video/286036987"
+          width="100%"
+          height="100%"
+          frameborder="0"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+        ></iframe>
+        <p>
+          <a href="https://vimeo.com/286036987">Wanderer (final)</a> from
+          <a href="https://vimeo.com/dancecology">Dancecology 舞蹈生態系</a> on
+          <a href="https://vimeo.com">Vimeo</a>.
+        </p>
+
+        <div class="layer">
+          <h1>
+            <a target="_blank" href="http://blog.dancecology.com/">
+              show Dropbox URL video
+            </a>
+          </h1>
+          <div class="icon">
+            <!--facebook-->
+            <a target="_blank" href="https://www.facebook.com/dancecology">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <!--blogger-->
+            <a target="_blank" href="http://blog.dancecology.com/">
+              <i class="fab fa-blogger"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-fullpage.js->
+    <script>
+      $('#fullpage').fullpage({
+        // 參數設定[註1]
+        navigation: true, // 顯示導行列
+        navigationPosition: 'right', // 導行列位置
+        loopBottom: true, //底部循環
+        //equivalent to jQuery `easeOutBack` extracted from http://matthewlein.com/ceaser/
+        easingcss3: 'cubic-bezier(0.175, 0.885, 0.320, 1.275)' //剎車效果
+      });
+    </script>
+
+    <!-- Live Chat Widget powered by https://keyreply.com/chat/ -->
+    <!-- Advanced options: -->
+    <!-- data-align="left" -->
+    <!-- data-overlay="true" -->
+    <script
+      data-align="right"
+      data-overlay="false"
+      id="keyreply-script"
+      src="//keyreply.com/chat/widget.js"
+      data-color="#E4392B"
+      data-apps="JTdCJTIybGluZSUyMjolMjJjbjI3NTI5JTIyLCUyMnR3aXR0ZXIlMjI6JTIyY24yNzUyOSUyMiwlMjJ0ZWxlZ3JhbSUyMjolMjJjbjI3NTI5JTIyLCUyMmZhY2Vib29rJTIyOiUyMjUzMzM5OTMwOCUyMiU3RA=="
+    ></script>
+  </body>
+</html>

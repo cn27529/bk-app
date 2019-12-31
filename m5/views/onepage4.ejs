@@ -1,0 +1,332 @@
+<%- contentFor('body')%>
+
+    <div id="fullpage">
+
+        <div class="section">
+
+            <h1>
+                <img src="./public/images/fb-logo.jpg" alt="logo" :class="(isActive)? 'animated bounce' : ''" style="width: 200px; height: 200px; border-radius: 50%;">
+            </h1>
+            <h2>
+                <span class="sites" style="margin:15px;">
+                <a target="_blank" href="<%= ig %>">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </span>
+
+                <span class="sites" style="margin:15px;">
+                <a target="_blank" href="<%= fb %>">
+                    <i class="fab fab-sm fa-facebook"></i>
+                </a>
+            </span>
+            </h2>
+
+        </div>
+
+        <div class="section" id="section1">
+            <div class="slide" style="background-image: url(public/foods/food-菜單.png);">
+                <h1>菜單
+                    <i :class="(isActive)? 'fas fas-sm fa-hand-point-right animated bounceInLeft' : 'fas fas-sm fa-hand-point-right'"></i>
+                </h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-海陸雙拼-100a.png);">
+                <h1></h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-海陸雙拼-100.png);">
+                <h1></h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-岩手親子31w.png);">
+                <h1>岩手親子丼(碗)</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-岩手親子32w.png);">
+                <h1>岩手親子丼(碗)</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-岩手親子1.png);">
+                <h1>岩手親子丼</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-岩手親子2.png);">
+                <h1>岩手親子丼</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-野口咖哩-45do.png);">
+                <h1>野口咖哩飯</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-野口咖哩-flat.png);">
+                <h1>野口咖哩飯</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-野口咖哩-full-flat.png);">
+                <h1>野口咖哩飯</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-雞排.png);">
+                <h1>雞排</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-鹽酥雞.png);">
+                <h1>鹽酥雞</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-豬肉蛋鐵板麵.png);">
+                <h1>豬肉蛋鐵板麵</h1>
+            </div>
+            <div class="slide" style="background-image: url(public/foods/food-套餐.png);">
+                <h1>套餐</h1>
+            </div>
+
+
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191228高雄JETS嘉年華.mp4" type="video/mp4" />
+        </video>
+            <div class="layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/12/28</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>高雄JETS嘉年華</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191130-歸仁長老教會.mp4" type="video/mp4" />
+        </video>
+            <div class="layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/11/30</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>歸仁長老教會</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191117-台南烏樹林.mp4" type="video/mp4" />
+        </video>
+            <div class="layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/11/17</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>&nbsp;&nbsp;台南烏樹林</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191110-台南仁壽宮.mp4" type="video/mp4" />
+        </video>
+            <div class="layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/11/10</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>&nbsp;&nbsp;台南仁壽宮</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191026-永華假日市集.mp4" type="video/mp4" />
+        </video>
+            <div class="container layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/10/26</span>
+                    </span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>永華假日市集</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <video class="myVideo" loop muted data-autoplay>
+            <source src="public/videos/lifestory-20191020-三民河提市集.mp4" type="video/mp4" />
+        </video>
+            <div class="layer">
+                <div>
+                    <i class="fas fas-sm fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>2019/10/20</span>
+                </div>
+                <div>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>三民河提市集</span>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <%- contentFor('css')%>
+        <style>
+            @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+            body {
+                font-family: ‘Noto Sans TC’, sans-serif;
+            }
+            /* Style for our header texts
+                        * --------------------------------------- */
+            
+            .layer span {
+                font-size: 40px;
+            }
+            
+            a {
+                text-decoration: none;
+                color: antiquewhite;
+            }
+            
+            .icon {
+                margin-top: 30px;
+            }
+            
+            .icon a {
+                margin: 15px;
+            }
+            
+            i {
+                font-size: 3em;
+            }
+            
+            h1 {
+                font-size: 3em;
+                color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            
+            h1 i {
+                font-size: 40px;
+            }
+            /* Centered texts in each section
+                    Backgrounds will cover all the section
+                        * --------------------------------------- */
+            
+            .section {
+                text-align: center;
+                background-size: cover;
+                background-color: #314b88;
+            }
+            
+            .slide {
+                /* -moz-background-size: 100% 100%;
+                -webkit-background-size: 100% 100%;
+                -o-background-size: 100% 100%;
+                background-size: 100% 100%;
+                background-size: cover;
+                background-repeat: no-repeat; */
+                position: relative;
+                opacity: 0.99;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            .slide h1 {
+                transform: translateY(-30%);
+                position: relative;
+                font-size: 50px;
+                top: -180px;
+            }
+            /* Defining each section background and styles
+                        * --------------------------------------- */
+            /*Adding background for the slides
+                        * --------------------------------------- */
+            
+            #infoMenu li a {
+                color: #ffffff;
+            }
+            
+            .myVideo {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #314b88;
+                /* in case the video doesn't fit the whole page*/
+                /*background-image:  our video; */
+                background-position: center center;
+                background-size: cover;
+                object-fit: cover;
+                /*cover video background */
+                z-index: 3;
+            }
+            
+            .section .layer {
+                position: absolute;
+                z-index: 4;
+                width: 100%;
+                left: 0;
+                top: 15%;
+                /*
+            		* Preventing flicker on some browsers
+            		* See http://stackoverflow.com/a/36671466/1081396  or issue #183
+            		*/
+                -webkit-transform: translate3d(0, 0, 0);
+                -ms-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+                color: #ffffff;
+            }
+        </style>
+
+        <%- contentFor('js')%>
+            <!-fullpage.js->
+            <script>
+                setInterval(function() {
+                    app.onChangeIcon();
+                }, 2000);
+
+                var app = new Vue({
+                    el: '#fullpage',
+                    data: {
+                        loading: false,
+                        isActive: false
+                    },
+
+                    //el methods
+                    methods: {
+                        onChangeIcon: function() {
+                            this.isActive = !this.isActive;
+                        },
+
+                        test: function(event) {
+                            return 'hello';
+                        }
+                    }
+                });
+
+
+                $('#fullpage').fullpage({
+                    // 參數設定[註1]
+                    navigation: false, // 顯示導行列
+                    //navigationPosition: 'right', // 導行列位置
+                    loopBottom: true, //底部循環
+                    //equivalent to jQuery `easeOutBack` extracted from http://matthewlein.com/ceaser/
+                    easingcss3: 'cubic-bezier(0.175, 0.885, 0.320, 1.275)' //剎車效果
+                });
+            </script>
+
+            <!-- Live Chat Widget powered by https://keyreply.com/chat/ -->
+            <!-- Advanced options: -->
+            <!-- data-align="left" -->
+            <!-- data-overlay="true" -->
+            <!-- <script data-align="right" data-overlay="false" id="keyreply-script" src="//keyreply.com/chat/widget.js" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJjbjI3NTI5JTIyLCUyMnR3aXR0ZXIlMjI6JTIyY24yNzUyOSUyMiwlMjJ0ZWxlZ3JhbSUyMjolMjJjbjI3NTI5JTIyLCUyMmZhY2Vib29rJTIyOiUyMjUzMzM5OTMwOCUyMiU3RA=="></script> -->

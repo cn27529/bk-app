@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%=title%>123
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-data-firebase/3.0.0/js-data-firebase.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>
+                <%=title%>
+            </h1>
+            <p>hello weather</p>
+            <div id="app"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col-lg-12 center">
+                <p></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAg0tGWsKqtjZcRnFPrBroVn8r111Q4EKY",
+        authDomain: "bkappdb.firebaseapp.com",
+        databaseURL: "https://bkappdb.firebaseio.com",
+        projectId: "bkappdb",
+        storageBucket: "bkappdb.appspot.com",
+        messagingSenderId: "1087681092838"
+    };
+    firebase.initializeApp(config);
+
+    // 建立 DB
+    var db = firebase.database()
+
+    // firebase.database().ref('/weathers/tw-Changhua_County').on('value', function(data) {
+    //     console.log(data.val());
+    // });
+
+    //var weathers_ref = new Firebase('https://bkappdb.firebaseio.com/');
+
+    //console.log(weathers_ref)
+
+    // // create Vue app
+    // var app = new Vue({
+    //     // element to mount to
+    //     el: '#app',
+    //     // initial data
+    //     data: {
+    //         // newUser: {
+    //         //     name: '',
+    //         //     email: ''
+    //         // }
+    //     },
+    //     // firebase binding
+    //     // https://github.com/vuejs/vuefire
+    //     firebase: {
+    //         weathers: weathers_ref
+    //     },
+    //     // computed property for form validation state
+    //     computed: {
+    //         validation: function() {
+    //             return {
+    //                 //name: !!this.newUser.name.trim(),
+    //                 //email: emailRE.test(this.newUser.email)
+    //             }
+    //         },
+    //         // isValid: function() {
+    //         //     var validation = this.validation
+    //         //     return Object.keys(validation).every(function(key) {
+    //         //         return validation[key]
+    //         //     })
+    //         // }
+    //     },
+    //     // methods
+    //     methods: {
+    //         // addUser: function() {
+    //         //     // if (this.isValid) {
+    //         //     //     usersRef.push(this.newUser)
+    //         //     //     this.newUser.name = ''
+    //         //     //     this.newUser.email = ''
+    //         //     // }
+    //         // },
+    //         // removeUser: function(user) {
+    //         //     //usersRef.child(user['.key']).remove()
+    //         // }
+    //     }
+    // })
+
+    var weathers_ref = db.ref('/weathers/')
+
+    weathers_ref.once('value', function(snapshot) {
+
+        console.log("weathersRef:", snapshot.val());
+        //weathers_ref = snapshot.val()
+        alert('weathers_ref')
+
+    });
+
+    //console.log(weathers_ref)
+
+    // create Vue app
+    var app = new Vue({
+        // element to mount to
+        el: '#app',
+        // initial data
+        data: {
+            // newUser: {
+            //     name: '',
+            //     email: ''
+            // }
+        },
+        // firebase binding
+        // https://github.com/vuejs/vuefire
+        firebase: {
+            weathers: weathers_ref
+        },
+        // computed property for form validation state
+        computed: {
+            validation: function() {
+                return {
+                    //name: !!this.newUser.name.trim(),
+                    //email: emailRE.test(this.newUser.email)
+                }
+            },
+            // isValid: function() {
+            //     var validation = this.validation
+            //     return Object.keys(validation).every(function(key) {
+            //         return validation[key]
+            //     })
+            // }
+        },
+        // methods
+        methods: {
+            // addUser: function() {
+            //     // if (this.isValid) {
+            //     //     usersRef.push(this.newUser)
+            //     //     this.newUser.name = ''
+            //     //     this.newUser.email = ''
+            //     // }
+            // },
+            // removeUser: function(user) {
+            //     //usersRef.child(user['.key']).remove()
+            // }
+        }
+    })
+</script>
+
+</html>

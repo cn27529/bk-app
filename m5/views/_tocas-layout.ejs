@@ -1,0 +1,111 @@
+<!-- http://cythilya.blogspot.tw/2015/02/bootstrap-rwd-template.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+        <%=title%>
+    </title>
+    <!-- Tocas UI：CSS 與元件 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.css" />
+    <!-- Tocas JS：模塊與 JavaScript 函式 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocas-ui/2.3.3/tocas.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css" integrity="sha256-2bAj1LMT7CXUYUwuEnqqooPb1W0Sw0uKMsqNH0HwMa4=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js" integrity="sha256-7OUNnq6tbF4510dkZHCRccvQfRlV3lPpBTJEljINxao=" crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="body_onload()">
+    <div class="ts narrow container">
+
+        <!--標題-->
+        <div id="layout_app">
+
+            <!-- <div class="ts top fixed inverted borderless large menu">
+                <a v-if="item === 'home'" :href="'/'" class="item" v-for="(item, index) in links">
+                    <i class="home big icon"></i>Home</a>
+                <a v-else :href="'/'+item" class="item">
+                    <i class="folder outline big icon"></i>{{ item }}</a>
+            </div> -->
+
+            <div class="ts top fixed inverted borderless large menu">
+                <a v-if="item.name === 'home'" :href="'/'" class="item" v-for="(item, index) in linksData">
+                    <i class="home big icon"></i>home</a>
+                <a v-else :href="'/'+item.name" class="item">
+                    <i :class="item.click? 'folder open outline big icon':'folder outline big icon'"></i> {{ item.name }}
+                </a>
+
+            </div>
+
+            <div style="margin-bottom: 80px;">
+                top height
+            </div>
+
+        </div>
+
+        <%- body%>
+    </div>
+</body>
+
+<%- js%>
+    <script>
+        //app-breadcrumb
+        var app_path = new Vue({
+            el: '#layout_app',
+            data: {
+                cool: '<%=cool%>',
+                title: '<%=title%>',
+                loading: false,
+                links: [],
+                linksData: []
+            },
+            mounted: function() {},
+            created: function() {
+                // `this` points to the vm instance
+                var data = this.title.split('/');
+                var map = data.map(function(item, index, arr) {
+                    if (index === 0 && item === '')
+                        return 'home';
+                    else
+                        return item;
+                });
+                //去除空白的值
+                var result = map.filter(function(item, index, arr) {
+                    return item !== '';
+                });
+                //alert(JSON.stringify(result));
+
+                this.links = result;
+
+                var linksData = [];
+                result.forEach(function(item, index, arr) {
+                    var data = {};
+                    data.click = false;
+                    data.name = item;
+                    data.index = index;
+                    if (index === result.length - 1) data.click = true;
+                    linksData.push(data);
+                });
+                this.linksData = Array.from(linksData);
+
+            },
+            //el methods
+            methods: {}
+        });
+    </script>
+
+    <%- css%>
+        <style>
+            a.header:first-letter {
+                text-transform: uppercase;
+            }
+        </style>
+
+</html>

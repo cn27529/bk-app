@@ -1,0 +1,138 @@
+<%- contentFor('body')%>
+
+    <div id='todolist-app'>
+
+        <h1>
+            {{ title }}
+        </h1>
+        <hr>
+
+        <input type="button" name="complete-all" id="complete-all" v-on:click="completeAll" value="Complete All">
+        <input type="text" class="newTodo" id="newTodo" v-model="newTodo" v-on:keyup.enter="addTodo">
+
+        <ul>
+            <li v-for="(item, index) in data_list">
+                <input type="checkbox" v-model="item.status" style="display:none;">
+                <span v-if="item.id <=9">0{{ item.id }}</span>
+                <span v-else>{{ item.id }}</span>
+                <span v-on:click="itemToggleCompleted({ item: item, index: index })" v-bind:style="item.status ? 'text-decoration:line-through;' : ''">
+                {{ item.content }}</span> {{ item.status ? ':)' : '' }}
+                <button v-on:click="removeTodolistItem({ item: item, index: index })">it a delay</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <%- contentFor('css')%>
+        <style>
+            body {
+                font-family: 'Courier New', Courier, monospace;
+            }
+            
+            .newTodo {
+                width: 50%;
+            }
+        </style>
+
+
+        <%- contentFor('js')%>
+            <script>
+                var _data_list = JSON.parse('<%-data_list%>');
+
+                console.log('pure js');
+
+                Swal.fire('loading...');
+
+                //defind vue app
+                var todolist_app = null;
+
+                var body_onload = function() {
+                    //alert('body_onload');
+                    console.log('body_onload');
+                    init_vue();
+                };
+
+
+
+                var init_vue = function() {
+
+                    if (typeof Vue === 'function') {
+
+                        console.log('vue ready');
+
+                        todolist_app = new Vue({
+                            el: '#todolist-app',
+                            data: {
+                                data_list: _data_list.slice(),
+                                title: '<%=title%>',
+                                newTodo: '',
+
+                            },
+
+                            methods: {
+                                addTodo(e) {
+
+                                    //console.log(e);
+
+                                    if (this.newTodo === '') return false;
+
+                                    //get max id then plus 1
+                                    var newid = Math.max.apply(Math, todolist_app.data_list.map(function(item, index, array) {
+                                        return item.id;
+                                    })) + 1;
+
+                                    var newTodo = {
+                                        id: newid,
+                                        content: this.newTodo,
+                                        status: false
+                                    }
+
+                                    this.data_list.push(newTodo);
+                                    this.newTodo = '';
+
+                                },
+                                completeAll(e) {
+                                    console.log(e.target.value == 'on');
+
+                                    this.data_list.forEach(function(item, index, array) {
+                                        item.status = true;
+                                    });
+
+                                },
+                                itemToggleCompleted(item_obj) {
+                                    //item_obj = { data: equals this a item data, index: the trigger item index }
+                                    console.log(item_obj.index);
+                                    (this.data_list[item_obj.index].status) ? this.data_list[item_obj.index].status = false: this.data_list[item_obj.index].status = true;
+                                },
+                                removeTodolistItem(item_obj) {
+                                    //item_obj = { data: equals this a item data, index: the trigger item index }
+                                    console.log(item_obj);
+                                    //var removed = this.data_list.slice(item_obj.index, 1);
+                                    //console.log(removed);
+
+                                    // this.data_list = this.data_list.filter(function(item, index, array) {
+                                    //     return item.index !== index;
+                                    // });
+
+                                    //this.data_list.splice(item_obj.index, 1); //沒效
+                                    this.$delete(this.data_list, item_obj.index);
+
+
+                                }
+
+                            },
+                        });
+
+                        console.log('vue loaded');
+
+                        Swal.close();
+
+                    } else
+                        alert('Vue is undefinded');
+
+                };
+
+
+
+                console.log('loaded js');
+            </script>
