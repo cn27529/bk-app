@@ -9,6 +9,7 @@
     },
     "scripts": {
         "start": "node app/index dev",
+        "m5": "node m5/index dev",
         "test": "node ./app/index dev",
         "www": "node ./app/bin/www dev"
     },

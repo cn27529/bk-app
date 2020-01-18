@@ -58,7 +58,7 @@ var weather = require("./routes/weather");
 var sitelinechat = require("./routes/sitelinechat");
 
 var todolist = require("./routes/todolist");
-
+var todolist_input = require("./routes/todolist_input");
 //app.use('/', index);
 //app.use('/index', index);
 app.use("/account", account);
@@ -92,6 +92,7 @@ app.get("/xlsx", function(req, res) {
 app.use("/weather", weather);
 app.use("/site-line-chat", sitelinechat);
 app.use("/todolist", todolist);
+app.use("/todo", todolist_input); 
 
 // catch 404 and forward to error handler
 app.use(function(err, req, res, next) {
